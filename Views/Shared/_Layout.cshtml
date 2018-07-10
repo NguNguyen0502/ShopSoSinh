@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ShopBeSoSinh</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div>
+        <div class="container contact-information-top">
+			<div class="container">
+				<div class="address-top">ABC, CMT8, Quận Tân Bình, tp.HCM</div>
+				<div class="email-top">abc@gmail.com</div>
+				<div class="social-network-top">
+					<a href="#" target="_blank">
+						<img src="@Url.Content("~/Content/img/ic_ff-8668.png")" alt="Shop bé sơ sinh Tp.HCM">
+					</a>
+				</div>
+			</div>	
+        </div>
+        <header class="nn-header main-content">
+            <div class=" col-sm-3 col-md-3 nn-text-align-center">
+                <a href="/"><img src="/Content/img/logo.png" class="img-responsive" /></a>
+            </div><!--end logo-->
+            <div class="col-md-6 col-sm-6 header-adjust">
+                @Html.Partial("_Search")
+            </div><!--end search box-->
+            <div class="nn-cart-box col-sm-3 col-md-3 header-adjust">
+                @Html.Partial("_CartInfo")
+            </div><!--end cart box-->
+        </header>
+
+        <div class="navbar navbar-default main-content">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home "></span></a>
+            </div>
+
+            <div class="navbar-collapse collapse js-navbar-collapse">
+                @Html.Partial("_Menu");
+            </div>
+        </div><!--end navigation-->
+        <div class="container main-content">
+            <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+                @Html.Action("Category","Home")
+            </div><!--end left-sidebar-->
+            <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
+                @RenderBody()
+			</div>
+        </div>
+		<div class="container main-content">
+			@Html.Partial("_Map");
+		</div>
+		@Html.Partial("_Footer");
+	</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-ui.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $("#search").autocomplete({
+                source: "/Home/Search",
+                minLength: 2
+            });
+        })
+    </script>
+</body>
+</html>
+<noembed/>
